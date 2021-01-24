@@ -741,3 +741,7 @@ button.main_bt a:hover {
 .navbar-bg-color {
   background-color: #009c15;
 }
+
+.abc {
+  width: auto;
+}
