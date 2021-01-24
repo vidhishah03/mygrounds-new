@@ -1,12 +1,42 @@
 {% extends 'base.html' %}
 
 {% block title %}Sign Up{% endblock %}
-
+{% block navbar %}
+	{% include "../Navbar.html" %}	  
+{% endblock %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
+<body>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="modal-dialog">
+				<div class="main-section">
+          <div class="modal-content" style="text-align:center;">
+            <h2>User SignUp</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-success btn-lg">Sign Up<span class="glyphicon glyphicon-log-in"></span></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="modal-dialog">
+				<div class="main-section">
+          <div class="modal-content" style="text-align:center;">
+            <h2>Vendor SignUp</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-success btn-lg">Next<span class="glyphicon glyphicon-log-in"></span></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
 {% endblock %}
