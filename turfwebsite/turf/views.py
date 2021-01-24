@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def home_view(request, *args, **kwargs):
-    return render(request, os.path.join("turf", "index.html"), {})
+    return render(request, "turf/landingpage.html")
