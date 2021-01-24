@@ -151,7 +151,7 @@ a {
 	background-image: url("../../../media/banner.png");
 	height: auto;
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 100px;
 	background-size: cover;
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -741,4 +741,3 @@ button.main_bt a:hover {
 .navbar-bg-color {
 	background-color: #009c15;
 }
-
