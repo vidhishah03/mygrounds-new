@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Log In{% endblock %}
 {% block navbar %}
 	{% include "../Navbar.html" %}	  
 {% endblock %}
 {% block content %}
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid formbody">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12 justify-content-center ">
       <div class="modal-dialog">
 				<div class="main-section">
-          <div class="modal-content" style="text-align:center;">
+          <div class="modal-content formmain" style="text-align:center;">
             <h2>Log In</h2>
             <form method="post">
               {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit" class="btn btn-success btn-lg">Log In</button>
+              {{ form| crispy }}
+              <button type="submit" class="btn btn-success btn-lg pd-0">Log In</button>
             </form>
-            <p> Don't have an account ?</p>
-            <a style="width: min-content; align-self: center;" class="btn btn-info" role="button" style="color: black;" href="../signup">Sign Up</a>
+            <p> Don't have an account ?<a style="color: blue" href="../signup">Sign Up</a></p>
+            
           </div>
         </div>
       </div>

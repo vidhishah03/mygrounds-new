@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Sign Up{% endblock %}
 {% block navbar %}
 	{% include "../Navbar.html" %}	  
 {% endblock %}
 {% block content %}
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid formbody">
   <div class="row">
     <div class="col-sm-6">
       <div class="modal-dialog">
 				<div class="main-section">
-          <div class="modal-content" style="text-align:center;">
+          <div class="modal-content formmain" style="text-align:center;">
             <h2>User SignUp</h2>
             <form method="post">
               {% csrf_token %}
-              {{ form.as_p }}
+              {{ form|crispy }}
               <button type="submit" class="btn btn-success btn-lg">Sign Up<span class="glyphicon glyphicon-log-in"></span></button>
             </form>
           </div>
@@ -25,11 +25,11 @@
     <div class="col-sm-6">
       <div class="modal-dialog">
 				<div class="main-section">
-          <div class="modal-content" style="text-align:center;">
+          <div class="modal-content formmain" style="text-align:center;">
             <h2>Vendor SignUp</h2>
             <form method="post">
               {% csrf_token %}
-              {{ form.as_p }}
+              {{ form|crispy }}
               <button type="submit" class="btn btn-success btn-lg">Next<span class="glyphicon glyphicon-log-in"></span></button>
             </form>
           </div>
