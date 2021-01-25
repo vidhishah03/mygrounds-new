@@ -2,32 +2,31 @@
 {% block navbar %}
 
 	  
-<nav class="navbar navbar-expand-lg bg-transparent ">
-    <a class="navbar-brand" href="#">Book My Turf</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+<nav class="navbar navbar-expand-lg navbar-mainbg" id='navnav'>
+  <a class="navbar-brand navbar-logo">TPO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <img src="/media/hamburger.png" alt="">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Find Turfs</a>
-        </li>
-        <li class="nav-item">
-          {% if user.is_authenticated %}
-          <li class="nav-item" >
-            <a class="nav-link" href="#" >{{ user.username }}</a>
+          <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+          <li class="nav-item active">
+              <a class="nav-link" href="/">Dashboard</a>
           </li>
-          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-          {% else %}
-          <a class="nav-link" href="{% url 'login' %}">Log In/Sign Up</a>
-          {% endif %}
+          
+          <li class="nav-item">
+              <a class="nav-link" href="/admin/login"></i>Admin login</a>
+          </li>
+         
+          <li class="nav-item ">
+            <a class="nav-link" href="/contact">Contact Us</a>
         </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Student Login</a>
+          </li>
       </ul>
-    </div>
- </nav>
+  </div>
+</nav>
  
 
 {% endblock %}
