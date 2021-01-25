@@ -1,14 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
-
+{% block title %}Log In{% endblock %}
+{% block navbar %}
+	{% include "../Navbar.html" %}	  
+{% endblock %}
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
-<p> Don't have an account ?</p>
-<a style="color: black;" href="../signup">Sign Up</a>
+<body>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="modal-dialog">
+				<div class="main-section">
+          <div class="modal-content" style="text-align:center;">
+            <h2>Log In</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-success btn-lg">Log In</button>
+            </form>
+            <p> Don't have an account ?</p>
+            <a style="width: min-content; align-self: center;" class="btn btn-info" role="button" style="color: black;" href="../signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
 {% endblock %}
