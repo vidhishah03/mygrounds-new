@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import DetailsForm 
+from .forms import *
+from .models import *
+from django.contrib import messages
 # Create your views here.
 
 
@@ -18,6 +20,14 @@ class SignUpView(generic.CreateView):
    
 # Create your views here. 
 def detailsform_view(request): 
-    context ={} 
-    context['form1']= DetailsForm() 
-    return render(request, "registration/grounddetails.html", context)
+    form = TurfForm()
+    if request.method == 'POST':
+        form = TurfForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Application sent successfully' , extra_tags='alert')
+            return redirect('home')
+    return render(request, 'registration/turfdetailsform.html', {'form': form})
+    
+
+
