@@ -7,8 +7,6 @@
 {% block content %}
 <body>
   <div class="container-fluid formbody">
-  <div class="row">
-    <div class="col-sm-6">
       <div class="modal-dialog">
 				<div class="main-section">
           <div class="modal-content formmain" style="text-align:center;">
@@ -21,22 +19,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="modal-dialog">
-				<div class="main-section">
-          <div class="modal-content formmain" style="text-align:center;">
-            <h2>Vendor SignUp</h2>
-            <form method="post">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button type="submit" class="btn btn-success btn-lg">Next<span class="glyphicon glyphicon-log-in"></span></button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 </body>
 {% endblock %}
