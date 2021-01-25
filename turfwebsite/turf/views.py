@@ -10,14 +10,11 @@ from .forms import DetailsForm
 def home_view(request, *args, **kwargs):
     return render(request, "turf/landingpage.html")
 
+def addturf_view(request):
+    return render(request, "registration/addturf.html")
+
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
-   
-# Create your views here. 
-def detailsform_view(request): 
-    context ={} 
-    context['form1']= DetailsForm() 
-    return render(request, "registration/grounddetails.html", context)

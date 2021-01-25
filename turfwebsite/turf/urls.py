@@ -7,6 +7,7 @@ from .views import SignUpView
 urlpatterns = [
     path('', views.home_view, name='home'),
     path('signup/', SignUpView.as_view(), name='signup'),
+    path('addturf/',views.addturf_view, name='addturf'),
 ]
 
 if settings.DEBUG:
