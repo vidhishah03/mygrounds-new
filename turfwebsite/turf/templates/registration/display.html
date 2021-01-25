@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Log In{% endblock %}
+{% block navbar %}
+	{% include "../Navbar.html" %}	  
+{% endblock %}
+{% block content %}
+<body>
+    {% for d in display %}
+			<div class="col-md-4 col-lg-3 col-sm-6 text-center">
+				<div class = "card" id="buy-cards">
+					<div class="card-body">
+						<img class="card-img-top" src="{{ d.image.url}}">
+                        <h5 class="card-title text-center" id="title-book">{{d.name}}</h5>
+                        <h5 class="card-title text-center" id="title-book">{{d.address}}</h5>
+                        <h5 class="card-title text-center" id="title-book">{{d.facilities}}</h5>
+                        <h5 class="card-title text-center" id="title-book">{{d.emergency}}</h5>
+                        <h5 class="card-title text-center" id="title-book">{{d.events}}</h5>
+
+						</div>
+
+				</div>
+			</div>
+			{% endfor %}
+</body>
+{% endblock %}

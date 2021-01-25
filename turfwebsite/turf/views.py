@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -30,6 +30,10 @@ def detailsform_view(request):
     return render(request, 'registration/turfdetailsform.html', {'form': form})
     
 
+
+def show_turf(request):
+    display = Turf_List.objects.all()
+    return render(request, 'registration/display.html', {'display': display})
 
 def addturf_view(request):
     return render(request, "registration/addturf.html")
