@@ -10,6 +10,7 @@ urlpatterns = [
     path('turfdetails/', views.detailsform_view, name='turfdetails'),
     path('display/', views.show_turf, name = "display"),
     path('addturf/',views.addturf_view, name='addturf'),
+    path('contactus/', views.show_contacts, name = "contactus"),
 ]
 
 if settings.DEBUG:

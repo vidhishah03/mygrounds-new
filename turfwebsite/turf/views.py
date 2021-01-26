@@ -10,7 +10,15 @@ from django.contrib import messages
 
 
 def home_view(request, *args, **kwargs):
-    return render(request, "turf/landingpage.html")
+    cform = ContactForm()
+    if request.method == 'POST':
+        cform = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()   
+            messages.success(request, 'Application sent successfully' , extra_tags='alert')         
+            return redirect('home')
+    return render(request, 'turf/landingpage.html', {'cform': cform})    
+    
 
 
 class SignUpView(generic.CreateView):
@@ -39,3 +47,10 @@ def show_turf(request):
 
 def addturf_view(request):
     return render(request, "registration/addturf.html")
+
+
+
+def show_contacts(request):
+    Contact_show = Contact.objects.all()
+    return render(request, 'turf/contact_show.html', {'Contact_show':Contact_show})
+    

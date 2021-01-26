@@ -33,3 +33,14 @@ class Turf_List(models.Model):
 #     phone_number = forms.IntegerField
 #     ground_name = forms.CharField(max_length = 50)
 #     ground_address = forms.CharField(max_length = 200)
+
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200, default='')
+    emailid = models.EmailField(max_length=254, default='')
+    message = models.CharField(max_length=2000, default='')
+    
+
+    def __str__(self):
+        return self.name
