@@ -14,11 +14,11 @@ def home_view(request, *args, **kwargs):
     if request.method == 'POST':
         cform = ContactForm(request.POST)
         if form.is_valid():
-            form.save()   
-            messages.success(request, 'Application sent successfully' , extra_tags='alert')         
+            form.save()
+            messages.success(
+                request, 'Application sent successfully', extra_tags='alert')
             return redirect('home')
-    return render(request, 'turf/landingpage.html', {'cform': cform})    
-    
+    return render(request, 'turf/landingpage.html', {'cform': cform})
 
 
 class SignUpView(generic.CreateView):
@@ -49,11 +49,10 @@ def addturf_view(request):
     return render(request, "registration/addturf.html")
 
 
-
 def show_contacts(request):
     Contact_show = Contact.objects.all()
-    return render(request, 'turf/contact_show.html', {'Contact_show':Contact_show})
-    
+    return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
+
 
 def myaccount_view(request):
     form = accountform()

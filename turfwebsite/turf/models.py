@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -29,12 +30,16 @@ class Turf_List(models.Model):
     facilities = models.CharField(max_length=500, default='')
     emergency = models.CharField(max_length=500, default='')
     events = models.CharField(max_length=500, default='')
+
     num_5v5 = models.CharField(max_length=1, choices=max_sizes, default="0")
     price_per_hour_5v5 = models.IntegerField(default=500)
+
     num_7v7 = models.CharField(max_length=1, choices=max_sizes, default="0")
     price_per_hour_7v7 = models.IntegerField(default=700)
+
     num_7v7_5v5 = models.CharField(
         max_length=1, choices=max_sizes, default="0")
+
     num_12v12 = models.CharField(max_length=1, choices=max_sizes, default="0")
     price_per_hour_12v12 = models.IntegerField(default=1200)
 
@@ -53,8 +58,8 @@ size_choices = (
 class Booking(models.Model):
     startTime = models.DateField(default=timezone.now)
     endTime = models.DateField()
-    size = models.CharField(max_length=3, choices=size_choices, default="5v5")
-    booked_turf_id = models.ForeignKey(Turf_List, default=1)
+    size = models.CharField(max_length=5, choices=size_choices, default="5v5")
+    # booked_turf_id = models.ForeignKey(Turf_List, default=1)
     # booker_mail = models.ForeignKey()
 
 # # creating a form
