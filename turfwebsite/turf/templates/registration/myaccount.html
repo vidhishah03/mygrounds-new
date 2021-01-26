@@ -11,8 +11,13 @@
             <div class="main-section">
                 <div class="modal-content formmain" style="text-align:center;">
                     <div class="form-input">
-                        <h3 style="color: white;">ADD TURF</h3>
-                        
+                        <h3 style="color: white;">MY PROFILE</h3>
+                        <form cform method="POST" enctype="multipart/form-data">
+                            HI {{ user.username }}
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <button type="button" class="main_bt bg-dark justify-content-center"><a href="{% url 'myaccount' %}">Save</a></button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,14 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+class User(models.Model):
+    name = models.CharField(max_length=200, default='')
+    emailid = models.EmailField(('email address'), unique=True)
+    phone_number = models.PositiveIntegerField(max_length=10)
+
+    def __str__(self):
+        return self.username
+
 
 class Turf_List(models.Model):
     name = models.CharField(max_length=200, default='')
@@ -23,16 +31,6 @@ class Turf_List(models.Model):
         return self.name
 
 # Reservation Model
-
-
-# # creating a form
-# class DetailsForm(forms.Form):
-
-#     first_name = forms.CharField(max_length = 50)
-#     last_name = forms.CharField(max_length = 50)
-#     phone_number = forms.IntegerField
-#     ground_name = forms.CharField(max_length = 50)
-#     ground_address = forms.CharField(max_length = 200)
 
 
 

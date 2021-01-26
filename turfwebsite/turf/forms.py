@@ -15,5 +15,9 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name', 'emailid', 'message']
 
-     
+class accountform(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['name','emailid','phone_number']
         
