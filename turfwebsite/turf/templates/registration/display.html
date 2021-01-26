@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '../base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}Log In{% endblock %}
 {% block navbar %}
@@ -10,17 +10,23 @@
 
     
     {% for d in display %}
-			<div class="col-md-4 col-lg-3 col-sm-6 text-center">
+			<div class="col-md-4 col-lg-3 col-sm-6">
 				<div class = "card" id="buy-cards">
 					<div class="card-body">
-						<img class="card-img-top" src="{{ d.image.url}}">
-                        <h5 class="card-title text-center" id="title-book">{{d.name}}</h5>
-                        <h5 class="card-title text-center" id="title-book">{{d.address}}</h5>
-                        <h5 class="card-title text-center" id="title-book">{{d.facilities}}</h5>
-                        <h5 class="card-title text-center" id="title-book">{{d.emergency}}</h5>
-                        <h5 class="card-title text-center" id="title-book">{{d.events}}</h5>
+                        <img class="card-img-top" src="{{ d.image.url}}">
+                        
+                        <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >{{d.name}}</div>
+                        <div  style="display: flex; height: auto;font-size: 0.8remrem;">
+                            <i class="fa fa-map-marker-alt"></i>
+                            {{d.address}}
+                        </div>
+                        <h5 class="card-title" >{{d.facilities}}</h5>
+                        <h5 class="card-title" >{{d.emergency}}</h5>
+                        <h5 class="card-title" >{{d.events}}</h5>
+                        <h5 class="card-title" >{{d.num_5v5}}</h5>
+                        <h5 class="card-title" >{{d.num_7v7}}</h5>
 
-						</div>
+                    </div>
 
 				</div>
 			</div>
