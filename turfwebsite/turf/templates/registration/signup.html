@@ -6,19 +6,15 @@
 {% endblock %}
 {% block content %}
 <body>
-  <div class="container-fluid ">
-      <div class="modal-dialog">
-				<div class="main-section">
-          
-            <h2 style="text-align:center;">User SignUp</h2>
-            <form method="post">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button type="submit" class="btn btn-success btn-lg">Sign Up<span class="glyphicon glyphicon-log-in"></span></button>
-            </form>
-          </div>
-        </div>
-      </div>
-  </div>
+  <h1 style="text-align: center;margin-top: 30px;">Sign Up</h1>
+  <div class="container" style=" padding: 10px 250px 0 250px;">
+    <form cform method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit" class="main_bt bg-dark justify-content-center"><a href="#">Sign up</a></button>
+      </form>
+                  
+               </div> 
+            
 </body>
 {% endblock %}
