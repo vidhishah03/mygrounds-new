@@ -1,6 +1,6 @@
 from django import forms 
-
 from .models import *
+
 class TurfForm(forms.ModelForm):
     class Meta:
         model = Turf_List

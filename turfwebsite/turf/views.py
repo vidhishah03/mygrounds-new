@@ -34,6 +34,7 @@ def detailsform_view(request):
 def show_turf(request):
     display = Turf_List.objects.all()
     return render(request, 'registration/display.html', {'display': display})
+    
 
 def addturf_view(request):
     return render(request, "registration/addturf.html")
