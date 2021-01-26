@@ -40,10 +40,10 @@ body {
 }
 
 form {
-	background-color: #104b2bb4;
 	padding: 50px;
 	height: 100%;
-
+	color: white;
+	background-color: rgba(0, 78, 48, 0.938);
 	border-radius: 20px;
 }
 
@@ -53,13 +53,6 @@ form {
 }
 .formbody {
 	margin-top: 7%;
-}
-
-.formmain {
-	background-color: rgba(0, 0, 0, 0.925);
-	color: white;
-	padding: 20px;
-	border-radius: 10px;
 }
 
 .formmain h2 {

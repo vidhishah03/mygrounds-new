@@ -121,14 +121,12 @@
                        <div class="container">
 						<form cform method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
-							{{cform.as_p}}
-			
+							{{cform|crispy}}
+							<button type="button" class="main_bt bg-dark justify-content-center"><a href="#">Send</a></button>
 							</form>
                           
                        </div> 
-                       <div class="send_btn">
-                        <button type="button" class="main_bt bg-dark"><a href="#">Send</a></button>
-                       </div>                   
+                                        
                     </div>
     			</div>
     			<div class="col-md-5">
