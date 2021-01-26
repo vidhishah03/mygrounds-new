@@ -54,3 +54,14 @@ def show_contacts(request):
     Contact_show = Contact.objects.all()
     return render(request, 'turf/contact_show.html', {'Contact_show':Contact_show})
     
+
+def myaccount_view(request):
+    form = accountform()
+    if request.method == 'POST':
+        form = accountform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Details saved successfully', extra_tags='alert')
+            return redirect('myaccount')
+    return render(request, 'registration/myaccount.html', {'form': form})
