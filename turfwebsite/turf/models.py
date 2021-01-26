@@ -59,17 +59,8 @@ class Booking(models.Model):
     startTime = models.DateField(default=timezone.now)
     endTime = models.DateField()
     size = models.CharField(max_length=5, choices=size_choices, default="5v5")
-    # booked_turf_id = models.ForeignKey(Turf_List, default=1)
-    # booker_mail = models.ForeignKey()
-
-# # creating a form
-# class DetailsForm(forms.Form):
-
-#     first_name = forms.CharField(max_length = 50)
-#     last_name = forms.CharField(max_length = 50)
-#     phone_number = forms.IntegerField
-#     ground_name = forms.CharField(max_length = 50)
-#     ground_address = forms.CharField(max_length = 200)
+    booked_turf_id = models.ForeignKey(
+        Turf_List, on_delete=models.CASCADE, default='')
 
 
 class Contact(models.Model):
