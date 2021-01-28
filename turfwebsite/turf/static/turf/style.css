@@ -563,7 +563,7 @@ button.btn.btn-primary:focus {
 .about_main {
 	width: 100%;
 	float: left;
-	background-color: #2ba879;
+	background-color: #00693e;
 	height: auto;
 	margin-top: 70px;
 	margin-bottom: 20px;
@@ -609,7 +609,9 @@ button.btn.btn-primary:focus {
 	float: left;
 	background-color: #ffffff;
 	padding: 12px 40px 0px 40px;
-	margin-top: 31px;
+	margin-top: 25%;
+	justify-content: center;
+	border-radius: 30px;
 }
 .dolar_tetx {
 	width: 100%;
@@ -805,10 +807,17 @@ button.main_bt a:hover {
 }
 
 .contact_product {
-	width: 100%;
-	float: left;
+	margin-right: 50px;
+	margin-left: 50px;
 	padding-bottom: 20px;
 	padding-top: 65px;
+}
+
+.dummybox {
+	margin-top: 70px;
+	display: block;
+	margin: 0 auto;
+	justify-content: center;
 }
 
 .menu {
@@ -850,7 +859,7 @@ button.main_bt a:hover {
 	color: #fff;
 	padding-bottom: 10px;
 	padding-top: 10px;
-	background-color: #2ba879;
+	background-color: #00693e;
 	padding: 15px 45px;
 	border: 0px;
 }
