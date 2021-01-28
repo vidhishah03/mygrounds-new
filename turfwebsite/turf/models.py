@@ -14,8 +14,7 @@ max_sizes = (
 
 
 class Turf_List(models.Model):
-    turf_id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False)
+    turf_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200, default='')
     address = models.CharField(max_length=500, default='')
     image = models.ImageField(default='', upload_to="../media")
