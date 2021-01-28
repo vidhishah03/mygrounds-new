@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import *
@@ -45,22 +45,15 @@ def show_turf(request):
     return render(request, 'registration/display.html', {'display': display})
 
 
-def addturf_view(request):
-    return render(request, "registration/addturf.html")
-
-
 def show_contacts(request):
     Contact_show = Contact.objects.all()
     return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
 
 
-def myaccount_view(request):
-    form = accountform()
-    if request.method == 'POST':
-        form = accountform(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, 'Details saved successfully', extra_tags='alert')
-            return redirect('myaccount')
-    return render(request, 'registration/myaccount.html', {'form': form})
+class myaccountview(generic.UpdateView):
+    form_class = UserChangeForm
+    success_url = reverse_lazy('home')
+    template_name = 'registration/myaccount.html'
+
+    def get_object(self):
+        return self.request.user

@@ -13,16 +13,6 @@ max_sizes = (
 )
 
 
-class User(models.Model):
-    username = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default='')
-    name = models.CharField(max_length=200, default='')
-    emailid = models.EmailField(('email address'), unique=True)
-    phone_number = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.name
-
-
 class Turf_List(models.Model):
     turf_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)

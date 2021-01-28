@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Log In{% endblock %}
+{% block title %}My Account{% endblock %}
 {% block navbar %}
 	{% include "../Navbar.html" %}	  
 {% endblock %}
@@ -11,12 +11,12 @@
             <div class="main-section">
                 <div class="modal-content formmain" style="text-align:center;">
                     <div class="form-input">
-                        <h3 style="color: white;">MY PROFILE</h3>
                         <form cform method="POST" enctype="multipart/form-data">
+                            <h3 style="color: black;">MY PROFILE</h3>
                             HI {{ user.username }}
                             {% csrf_token %}
                             {{form|crispy}}
-                            <button type="button" class="main_bt bg-dark justify-content-center"><a href="{% url 'myaccount' %}">Save</a></button>
+                            <button type="submit" class="main_bt bg-dark justify-content-center" style="width: fit-content;">Update Profile</button>
                         </form>
                     </div>
                 </div>
