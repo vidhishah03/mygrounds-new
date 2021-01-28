@@ -12,7 +12,7 @@ urlpatterns = [
     path('display/', views.show_turf, name = "display"),
     path('myaccount/', myaccountview.as_view(), name='myaccount'),
     path('contactus/', views.show_contacts, name = "contactus"),
-    path('password/',passwordchangeview.as_view(template_name='registration/changepassword.html')),
+    path('password/',passwordchangeview.as_view(), name = 'password'),
 ]
 
 if settings.DEBUG:

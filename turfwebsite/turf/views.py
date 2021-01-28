@@ -60,5 +60,6 @@ class myaccountview(generic.UpdateView):
         return self.request.user
 
 class passwordchangeview(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = passwordchangeForm
     success_url = reverse_lazy('myaccount')
+    template_name='registration/changepassword.html'
