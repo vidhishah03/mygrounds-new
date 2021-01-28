@@ -13,7 +13,6 @@
                     <div class="form-input">
                         <form cform method="POST" enctype="multipart/form-data">
                             <h3 style="color: black;">MY PROFILE</h3>
-                            HI {{ user.username }}
                             {% csrf_token %}
                             {{form|crispy}}
                             <button type="submit" class="main_bt bg-dark justify-content-center" style="width: fit-content;">Update Profile</button>
