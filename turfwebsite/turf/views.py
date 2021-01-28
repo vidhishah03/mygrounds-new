@@ -1,6 +1,7 @@
 import os
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView 
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import *
@@ -51,9 +52,13 @@ def show_contacts(request):
 
 
 class myaccountview(generic.UpdateView):
-    form_class = UserChangeForm
-    success_url = reverse_lazy('home')
+    form_class = MyAccountForm
+    success_url = reverse_lazy('myaccount')
     template_name = 'registration/myaccount.html'
 
     def get_object(self):
         return self.request.user
+
+class passwordchangeview(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('myaccount')

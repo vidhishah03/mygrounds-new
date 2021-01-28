@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import SignUpView, myaccountview
+from .views import SignUpView, myaccountview, passwordchangeview
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home_view, name='home'),
@@ -11,6 +12,7 @@ urlpatterns = [
     path('display/', views.show_turf, name = "display"),
     path('myaccount/', myaccountview.as_view(), name='myaccount'),
     path('contactus/', views.show_contacts, name = "contactus"),
+    path('password/',passwordchangeview.as_view(template_name='registration/changepassword.html')),
 ]
 
 if settings.DEBUG:
