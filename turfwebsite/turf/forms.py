@@ -34,3 +34,10 @@ class passwordchangeForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ['old_password','new_password1','new_password2']
+
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = feedback
+        fields = ['image', 'message']

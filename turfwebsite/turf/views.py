@@ -66,5 +66,16 @@ class passwordchangeview(PasswordChangeView):
 
 
     
-def gallery_view(request):   
-    return render(request, 'turf/gallery.html')
+
+
+
+# Create your views here.
+def feedbackview(request):
+    form = FeedbackForm()
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thank you for your feedback :)', extra_tags='alert')
+            return redirect('home')
+    return render(request, 'turf/gallery.html', {'form': form})

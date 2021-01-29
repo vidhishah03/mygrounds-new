@@ -62,3 +62,9 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+class feedback(models.Model):
+    image = models.ImageField(default='', upload_to="../media")
+    message = models.TextField( default='')
+    def __str__(self):
+        return self.message
