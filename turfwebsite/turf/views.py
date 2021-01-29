@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
-from django.contrib.auth.views import PasswordChangeView 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import *
@@ -14,8 +14,8 @@ def home_view(request, *args, **kwargs):
     cform = ContactForm()
     if request.method == 'POST':
         cform = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
+        if cform.is_valid():
+            cform.save()
             messages.success(
                 request, 'Application sent successfully', extra_tags='alert')
             return redirect('home')
@@ -59,12 +59,21 @@ class myaccountview(generic.UpdateView):
     def get_object(self):
         return self.request.user
 
+
 class passwordchangeview(PasswordChangeView):
     form_class = passwordchangeForm
     success_url = reverse_lazy('myaccount')
-    template_name='registration/changepassword.html'
+    template_name = 'registration/changepassword.html'
 
 
-    
-def gallery_view(request):   
-    return render(request, 'turf/gallery.html')
+# Create your views here.
+def feedbackview(request):
+    form = FeedbackForm()
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Thank you for your feedback :)', extra_tags='alert')
+            return redirect('home')
+    return render(request, 'turf/gallery.html', {'form': form})
