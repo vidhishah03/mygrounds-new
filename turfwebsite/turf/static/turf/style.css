@@ -28,6 +28,7 @@
 
 html {
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 body {
@@ -40,11 +41,14 @@ body {
 }
 
 form {
-	padding: 50px;
+	padding: 30px 100px;
 	height: 100%;
 	color: white;
 	background-color: rgba(0, 78, 48, 0.938);
 	border-radius: 20px;
+	border: 3px solid rgba(0, 53, 31, 0.507);
+	font-size: 20px;
+	margin-bottom: 20px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto");
@@ -199,6 +203,9 @@ i {
 	.hori-selector .right:before {
 		bottom: -25px;
 		left: -25px;
+	}
+	form {
+		padding: 30px 60px;
 	}
 }
 
@@ -757,17 +764,21 @@ button.btn.btn-primary:focus {
 }
 
 button.main_bt {
-	background: #ce4109;
+	background: #e4fff0d2;
 	border: none;
-	color: #fff;
-	width: 150px;
-	height: 50px;
-	border-radius: 5px;
-	font-size: 22px;
+	width: 170px;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 15px;
+	justify-content: center;
+	text-align: center;
+	display: block;
+	margin: 50px auto 0 auto;
+	font-weight: 300;
 }
 
-button.main_bt a:hover {
-	color: #ffffff;
+button.main_bt:hover {
+	background: #4cf598dc;
 }
 
 .send_btn {

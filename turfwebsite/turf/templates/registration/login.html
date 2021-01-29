@@ -6,12 +6,12 @@
 {% endblock %}
 {% block content %}
 <body>
-  <h1 style="text-align: center;margin-top: 30px;">Login</h1>
-  <div class="container" style=" padding: 10px 250px 0 250px;">
+  <h1 style="text-align: center;margin-top: 30px;">LOGIN</h1>
+  <div class="container" style=" display: block; margin: auto; width: max-content;">
     <form cform method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{form|crispy}}
-      <button type="submit" class="main_bt bg-dark justify-content-center">Login</button>
+      <button type="submit" class="main_bt justify-content-center ">Login</button>
       </form>
                   
                </div> 
