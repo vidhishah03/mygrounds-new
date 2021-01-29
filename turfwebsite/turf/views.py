@@ -63,3 +63,8 @@ class passwordchangeview(PasswordChangeView):
     form_class = passwordchangeForm
     success_url = reverse_lazy('myaccount')
     template_name='registration/changepassword.html'
+
+
+    
+def gallery_view(request):   
+    return render(request, 'turf/gallery.html')
