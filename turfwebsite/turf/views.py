@@ -54,9 +54,9 @@ def show_contacts(request):
     return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
 
 def show_myturfs(request):
-    myturfs = Turf_List.objects.all()
-    context = {'myturfs': myturfs}
-    return render(request, 'registration/myturfs.html', context)
+    logged_in_user = request.user
+    logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
+    return render(request,'registration/myturfs.html',{'myturfs':logged_in_user_posts})
 
 
 class myaccountview(generic.UpdateView):
