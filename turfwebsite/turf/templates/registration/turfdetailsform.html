@@ -5,18 +5,9 @@
 	{% include "../Navbar.html" %}	  
 {% endblock %}
 {% block content %}
-<div class="turf-img" style="background: url('https://images.unsplash.com/photo-1521258602057-9a3fbcb96df2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80');
-background-size: cover;
-background-position: center;
-padding: 60px 0;">
+<div class="turf-img" >
   <div class="container">
-    <form cform method="POST" enctype="multipart/form-data" style="margin-bottom: 0;padding: 30px 100px;
-    height: 100%;
-    color: white;
-    background-color: rgba(0,0,0,0.7);
-    border-radius: 20px;
-    border: 3px solid rgba(0, 53, 31, 0.507);
-    font-size: 20px;">
+    <form cform method="POST" enctype="multipart/form-data" class="form-css">
       {% csrf_token %}
       {{form|crispy}}
       <button type="submit" class="main_bt justify-content-center" style="width: 100%;height: 50px;background-color: #028a0f;font-size: 1.25rem;color: white;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;cursor: pointer;">Send</button>
