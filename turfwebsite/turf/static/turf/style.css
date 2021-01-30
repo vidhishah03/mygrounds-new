@@ -1028,6 +1028,11 @@ button.main_bt:hover {
   z-index: -1;
   padding: 25px;
 }
+
+.badgez {
+  font-size: 0.8rem;
+  padding: 5px;
+}
 /* .aesthetic-back-cover {
   background-color: white;
   padding: 15px;
