@@ -45,7 +45,6 @@ def show_turf(request):
     display = Turf_List.objects.all()
     return render(request, 'registration/display.html', {'display': display})
 
-
 def show_contacts(request):
     Contact_show = Contact.objects.all()
     return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
@@ -58,6 +57,7 @@ class myaccountview(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
 
 
 class passwordchangeview(PasswordChangeView):

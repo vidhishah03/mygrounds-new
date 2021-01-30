@@ -13,21 +13,19 @@
 			<div class="col-md-4 col-lg-3 col-sm-6">
 				<div class = "card" id="buy-cards">
 					<div class="card-body">
-                        <img class="card-img-top" src="{{ d.image.url}}">
+                        <img class="card-img-top" src="{{ d.image.url}}" style="height: 150px; width: 250px;">
                         
                         <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >{{d.name}}</div>
+                        <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >Owner : {{d.owner}}</div>
                         <div  style="display: flex; height: auto;font-size: 0.8remrem;">
                             <i class="fa fa-map-marker-alt"></i>
                             {{d.address}}
                         </div>
-                        <h5 class="card-title" >{{d.facilities}}</h5>
-                        <h5 class="card-title" >{{d.emergency}}</h5>
-                        <h5 class="card-title" >{{d.events}}</h5>
-                        <h5 class="card-title" >{{d.num_5v5}} {{d.price_per_hour_5v5}}</h5>
-                        <h5 class="card-title" >{{d.num_7v7}} {{d.price_per_hour_7v7}}</h5>
-                        <h5 class="card-title" >{{d.num_12v12}} {{d.price_per_hour_12v12}}</h5>
-                        <h5 class="card-title" >{{d.num_7v7_5v5}}</h5>
-
+                        
+                        <h5 class="card-title" >Upcoming Events : {{d.events}}</h5>
+                        <h5 class="card-title" >Number of turfs : {{d.num_5v5_turfs}} </h5>
+                        <h5 class="card-title" >Price per Turf : {{d.price_per_hour_5v5}}</h5>
+                        <button class="btn btn-info">Book </button>
                     </div>
 
 				</div>
