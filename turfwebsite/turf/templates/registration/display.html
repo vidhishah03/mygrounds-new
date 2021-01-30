@@ -36,7 +36,7 @@
                             <h5 style="font-size: 1rem;padding: 5px 0;">Upcoming Events : <div class="badge badge-success">{{d.events}}</div></h5>
                             <h5 style="font-size: 1rem;padding: 5px 0;">Number of turfs : <div class="badge badge-success">{{d.num_5v5_turfs}}</div></h5>
                             <h5 style="font-size: 1rem;padding: 5px 0;">Price per Turf : <div class="badge badge-success">{{d.price_per_hour_5v5}}</div></h5>
-                            <button class="btn btn-primary mt-3">Book </button>
+                            <a href="{% url 'book' %}"><button class="btn btn-primary mt-3">Book </button></a>
                         </div>
     
                     </div>
