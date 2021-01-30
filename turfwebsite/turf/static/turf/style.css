@@ -41,14 +41,13 @@ body {
 }
 
 form {
-  padding: 30px 100px;
+  padding: 50px;
   height: 100%;
   color: white;
-  background-color: rgba(0, 78, 48, 0.938);
+  background-color: rgb(12, 128, 50);
   border-radius: 20px;
   border: 3px solid rgba(0, 53, 31, 0.507);
   font-size: 20px;
-  margin-bottom: 20px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto");
@@ -1012,7 +1011,8 @@ button.main_bt:hover {
 .filter-form {
   margin: auto;
   width: 80%;
-  margin-top: 25px;
+  padding: 25px 0;
+  font-weight: 600;
 }
 .grid-attempt {
   display: grid;
@@ -1022,6 +1022,17 @@ button.main_bt:hover {
   background-size: cover;
   background-position: center;
 }
+
+.aesthetic-back {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3XuhZduAoIguXZfzmWXesatPMD4hNLrDuzg&usqp=CAU");
+  z-index: -1;
+  padding: 25px;
+}
+/* .aesthetic-back-cover {
+  background-color: white;
+  padding: 15px;
+} */
+
 /* Forced Changes */
 .nice-select {
   display: none;
