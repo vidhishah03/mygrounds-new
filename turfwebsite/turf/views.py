@@ -53,18 +53,19 @@ def show_contacts(request):
     Contact_show = Contact.objects.all()
     return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
 
+def show_myturfs(request):
+    myturfs = Turf_List.objects.all()
+    context = {'myturfs': myturfs}
+    return render(request, 'registration/myturfs.html', context)
+
 
 class myaccountview(generic.UpdateView):
     form_class = MyAccountForm
     success_url = reverse_lazy('myaccount')
     template_name = 'registration/myaccount.html'
 
-
-
     def get_object(self):
         return self.request.user
-   
-
 
 
 
@@ -85,12 +86,3 @@ def feedbackview(request):
                 request, 'Thank you for your feedback :)', extra_tags='alert')
             return redirect('home')
     return render(request, 'turf/gallery.html', {'form': form})
-
-     
-    
-def user_posts( request):   
-    logged_in_user = request.user
-    logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
-    return render(request, 'registration/myaccountextend.html', {'turfs': logged_in_user_posts})
-
-
