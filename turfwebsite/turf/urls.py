@@ -14,7 +14,7 @@ urlpatterns = [
     path('contactus/', views.show_contacts, name = "contactus"),
     path('password/',passwordchangeview.as_view(), name = 'password'),
     path('gallery/',views.feedbackview, name = 'gallery'),
-    
+    path('myaccountextended/', views.user_posts, name='turfs'),
 
 ]
 
