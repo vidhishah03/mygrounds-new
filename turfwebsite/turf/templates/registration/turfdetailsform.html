@@ -10,6 +10,7 @@
     <form cform method="POST" enctype="multipart/form-data" class="form-css">
       {% csrf_token %}
       {{form|crispy}}
+      <h3 style="color: white; "><b>FOLLOW 24HR FORMAT AND HH:MM FORMAT WHILE PROVIDING TIME</b></h3>
       <button type="submit" class="main_bt justify-content-center" style="width: 100%;height: 50px;background-color: #028a0f;font-size: 1.25rem;color: white;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;cursor: pointer;">Send</button>
     </form>          
   </div> 
