@@ -7,16 +7,13 @@
 {% block content %}
 <body>
     <div>
-        <div class="row">
-            <div class="col">
-                <div class="card card-body">
-                    <form method="get">
-                        {{myFilter.form}}
-                        <button class="btn btn-info" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
+        <div class="filter-form">
+            <form method="GET" class="grid-attempt">
+                {{myFilter.form}}
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
         </div>
+
     </div>
     <div style="display: flex;">
     {% for d in display %}
