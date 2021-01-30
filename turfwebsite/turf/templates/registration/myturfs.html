@@ -13,7 +13,7 @@
 					<div class="card-body">
                         <img class="card-img-top" src="{{ d.image.url}}" style="height: 150px; width: 250px;">
                         
-                        <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >{{d.name}}</div>
+                        <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >Turf Name : {{d.name}}</div>
                         <div  style="display: flex; height: auto;font-size: 0.8remrem;">
                             <i class="fa fa-map-marker-alt"></i>
                             {{d.address}}
@@ -21,8 +21,9 @@
                         
                         <h5 class="card-title" >Upcoming Events : {{d.events}}</h5>
                         <h5 class="card-title" >Number of turfs : {{d.num_5v5_turfs}} </h5>
-                        <h5 class="card-title" >Price per Turf : {{d.price_per_hour_5v5}}</h5>
-                        <button class="btn btn-info">Edit </button>
+                        <h5 class="card-title" >Price per Turf On Weekdays : {{d.price_per_hour_5v5_weekdays}}</h5>
+                        <h5 class="card-title" >Price per Turf On Weekends : {{d.price_per_hour_5v5_weekends}}</h5>
+                        <button class="btn btn-info"><a href="{% url 'editturf' %}">Edit</a></button>
                     </div>
 				</div>
             </div>

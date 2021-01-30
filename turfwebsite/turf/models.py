@@ -18,18 +18,18 @@ max_sizes = (
 class Turf_List(models.Model):
     turf_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default='')
-    address = models.CharField(max_length=500, default='')
-    image = models.ImageField(default='', upload_to="../media")
+    name = models.CharField('Turf Name',max_length=200, default='')
+    address = models.CharField('Turf Address',max_length=500, default='')
+    image = models.ImageField('Turf Image',default='', upload_to="../media")
     has_refreshments = models.BooleanField(default=False)
     has_first_aid = models.BooleanField(default=False)
     has_parking = models.BooleanField(default=False)
-    events = models.CharField(max_length=500, default='')
-    num_5v5_turfs = models.CharField(max_length=1, choices=max_sizes, default="0")
-    price_per_hour_5v5_weekdays = models.IntegerField(default=500)
+    events = models.CharField('Upcoming Events',max_length=500, default='')
+    num_5v5_turfs = models.CharField('Number Of Turfs [5v5 Size]',max_length=1, choices=max_sizes, default="0")
+    price_per_hour_5v5_weekdays = models.IntegerField('Price per Hour [WEEKDAYS]',default=500)
     weekdays_turf_opening_time = models.TimeField(auto_now=False, auto_now_add=False, default="00:00")
     weekdays_turf_closing_time = models.TimeField(auto_now=False, auto_now_add=False, default="00:00")
-    price_per_hour_5v5_weekends = models.IntegerField(default=700)
+    price_per_hour_5v5_weekends = models.IntegerField('Price per Hour [WEEKENDS]',default=700)
     weekends_turf_opening_time = models.TimeField(auto_now=False, auto_now_add=False, default="00:00")
     weekends_turf_closing_time = models.TimeField(auto_now=False, auto_now_add=False, default="00:00")
 
@@ -39,11 +39,11 @@ class Turf_List(models.Model):
 
 # Reservation Model
 class Booking(models.Model):
-    booked_turf_id = models.ForeignKey(Turf_List, on_delete=models.CASCADE)
+    booked_turf_name = models.ForeignKey(Turf_List, on_delete=models.CASCADE)
     guest = models.ForeignKey(User, default='', on_delete=models.CASCADE)
-    num_5v5 = models.CharField(max_length=1, choices=max_sizes, default="0")
-    startTime = models.DateTimeField(default=datetime.now, blank=True)
-    endTime = models.DateTimeField(default=datetime.now, blank=True)
+    num_5v5 = models.CharField('Number Of Turfs',max_length=1, choices=max_sizes, default="0")
+    startTime = models.DateTimeField('Start Time',default=datetime.now, blank=True)
+    endTime = models.DateTimeField('End Time',default=datetime.now, blank=True)
     
     
 

@@ -82,7 +82,28 @@ def feedbackview(request):
         form = FeedbackForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(
-                request, 'Thank you for your feedback :)', extra_tags='alert')
+            messages.success(request, 'Thank you for your feedback :)', extra_tags='alert')
             return redirect('home')
     return render(request, 'turf/gallery.html', {'form': form})
+
+def bookingview(request):
+    form = BookingForm()
+    if request.method == 'POST':
+        form = BookingForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Booking Successfull :)', extra_tags='alert')
+            return redirect('myaccount')
+    return render(request, 'registration/booking.html', {'form': form})
+
+def editturfview(request):
+    form = EditTurfForm()
+    if request.method == 'POST':
+        form = EditTurfForm(request.POST, request.FILES, instance=Turf_List)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Update Successfull :)', extra_tags='alert')
+            return redirect('myturfs')
+    return render(request, 'turf/editturf.html', {'form': form})
+    
+        
