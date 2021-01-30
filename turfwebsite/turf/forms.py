@@ -52,3 +52,16 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = feedback
         fields = ['image', 'message']
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['booked_turf_name','num_5v5','startTime','endTime']
+
+class EditTurfForm(forms.ModelForm):
+    class Meta:
+        model = Turf_List
+        fields = ['image', 'has_refreshments', 'has_parking',
+                    'has_first_aid', 'events',  'num_5v5_turfs', 'price_per_hour_5v5_weekdays',
+                    'weekdays_turf_opening_time','weekdays_turf_closing_time','price_per_hour_5v5_weekends',
+                    'weekends_turf_opening_time','weekends_turf_closing_time']

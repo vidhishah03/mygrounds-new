@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import SignUpView, myaccountview, passwordchangeview
+from .views import SignUpView, myaccountview, passwordchangeview, editturfview
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -15,6 +15,8 @@ urlpatterns = [
     path('password/',passwordchangeview.as_view(), name = 'password'),
     path('gallery/',views.feedbackview, name = 'gallery'),
     path('myturfs/',views.show_myturfs, name = "myturfs"),
+    path('book/',views.bookingview,name= "book"),
+    path('editturf/', views.editturfview, name='editturf'),
 
 ]
 
