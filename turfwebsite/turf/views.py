@@ -7,6 +7,7 @@ from django.views import generic
 from .forms import *
 from .models import *
 from django.contrib import messages
+from .filters import Turf_ListFilter
 # Create your views here.
 
 
@@ -43,7 +44,10 @@ def detailsform_view(request):
 
 def show_turf(request):
     display = Turf_List.objects.all()
-    return render(request, 'registration/display.html', {'display': display})
+    myFilter = Turf_ListFilter(request.GET, queryset=display)
+    display = myFilter.qs
+    context = {'display': display, 'myFilter': myFilter}
+    return render(request, 'registration/display.html', context)
 
 def show_contacts(request):
     Contact_show = Contact.objects.all()

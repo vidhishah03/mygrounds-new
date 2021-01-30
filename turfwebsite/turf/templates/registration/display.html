@@ -6,9 +6,19 @@
 {% endblock %}
 {% block content %}
 <body>
+    <div>
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <form method="get">
+                        {{myFilter.form}}
+                        <button class="btn btn-info" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div style="display: flex;">
-
-    
     {% for d in display %}
 			<div class="col-md-4 col-lg-3 col-sm-6">
 				<div class = "card" id="buy-cards">
@@ -30,7 +40,7 @@
 
 				</div>
 			</div>
-            {% endfor %}
-        </div>
+        {% endfor %}
+    </div>
 </body>
 {% endblock %}

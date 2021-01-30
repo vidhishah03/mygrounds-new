@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'turf.apps.TurfConfig',
     'crispy_forms',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
