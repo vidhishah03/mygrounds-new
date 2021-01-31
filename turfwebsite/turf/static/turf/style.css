@@ -1038,6 +1038,26 @@ button.main_bt:hover {
   padding: 15px;
 } */
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(13, 141, 45);
+}
+
 /* Forced Changes */
 .nice-select {
   display: none;
