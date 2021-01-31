@@ -92,7 +92,7 @@ def feedbackview(request):
 
 def bookingview(request):
     turf_id_new = request.GET.get("turfId")
-    turf = Turf_List.objects.filter(turf_id=turf_id_new)
+    turf = Turf_List.objects.values_list('name',flat=True).get(turf_id=turf_id_new)
     # return HttpResponse(turf)
 
     form = BookingForm()
