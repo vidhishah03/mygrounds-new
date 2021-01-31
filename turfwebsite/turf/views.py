@@ -63,7 +63,8 @@ def show_contacts(request):
 def show_myturfs(request):
     logged_in_user = request.user
     logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
-    return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts})
+    logged_in_user_bookings = Booking.objects.filter(guest=logged_in_user)
+    return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts,'mybookings':logged_in_user_bookings})
 
 
 class myaccountview(generic.UpdateView):
@@ -111,7 +112,7 @@ def bookingview(request):
                 form.save()
                 messages.success(request, 'Booking Successfull :)',
                                  extra_tags='alert')
-                return redirect('myaccount')
+                return redirect('myturfs')
         return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
