@@ -33,6 +33,8 @@ class SignUpView(generic.CreateView):
 # Create your views here.
 def detailsform_view(request):
     form = TurfForm()
+    currentuser = request.user
+    user = User.objects.values_list('username',flat=True).get(username=currentuser)
     if request.method == 'POST':
         form = TurfForm(request.POST, request.FILES)
         if form.is_valid():
@@ -40,7 +42,7 @@ def detailsform_view(request):
             messages.success(
                 request, 'Application sent successfully', extra_tags='alert')
             return redirect('home')
-    return render(request, 'registration/turfdetailsform.html', {'form': form})
+    return render(request, 'registration/turfdetailsform.html', {'form': form, 'user':user})
 
 
 def show_turf(request):
@@ -94,6 +96,8 @@ def bookingview(request):
     turf_id_new = request.GET.get("turfId")
     turf = Turf_List.objects.values_list('name',flat=True).get(turf_id=turf_id_new)
     # return HttpResponse(turf)
+    currentuser = request.user
+    user = User.objects.values_list('username',flat=True).get(username=currentuser)
 
     form = BookingForm()
     if request.method == 'POST':
@@ -103,7 +107,7 @@ def bookingview(request):
             messages.success(request, 'Booking Successfull :)',
                              extra_tags='alert')
             return redirect('myaccount')
-    return render(request, 'registration/booking.html', {'form': form, 'turf': turf})
+    return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
 
 
 def editturfview(request):
