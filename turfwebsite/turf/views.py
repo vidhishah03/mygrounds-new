@@ -39,6 +39,7 @@ def detailsform_view(request):
     if request.method == 'POST':
         form = TurfForm(request.POST, request.FILES)
         if form.is_valid():
+            owner = form.cleaned_data['owner']
             form.save()
             messages.success(
                 request, 'Application sent successfully', extra_tags='alert')
