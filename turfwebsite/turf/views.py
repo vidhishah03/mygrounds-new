@@ -8,6 +8,7 @@ from .forms import *
 from .models import *
 from django.contrib import messages
 from .filters import Turf_ListFilter
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -49,14 +50,16 @@ def show_turf(request):
     context = {'display': display, 'myFilter': myFilter}
     return render(request, 'registration/display.html', context)
 
+
 def show_contacts(request):
     Contact_show = Contact.objects.all()
     return render(request, 'turf/contact_show.html', {'Contact_show': Contact_show})
 
+
 def show_myturfs(request):
     logged_in_user = request.user
     logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
-    return render(request,'registration/myturfs.html',{'myturfs':logged_in_user_posts})
+    return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts})
 
 
 class myaccountview(generic.UpdateView):
@@ -66,7 +69,6 @@ class myaccountview(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
-
 
 
 class passwordchangeview(PasswordChangeView):
@@ -82,19 +84,27 @@ def feedbackview(request):
         form = FeedbackForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thank you for your feedback :)', extra_tags='alert')
+            messages.success(
+                request, 'Thank you for your feedback :)', extra_tags='alert')
             return redirect('home')
     return render(request, 'turf/gallery.html', {'form': form})
 
+
 def bookingview(request):
+    turf_id_new = request.GET.get("turfId")
+    turf = Turf_List.objects.filter(turf_id=turf_id_new)
+    # return HttpResponse(turf)
+
     form = BookingForm()
     if request.method == 'POST':
         form = BookingForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Booking Successfull :)', extra_tags='alert')
+            messages.success(request, 'Booking Successfull :)',
+                             extra_tags='alert')
             return redirect('myaccount')
-    return render(request, 'registration/booking.html', {'form': form})
+    return render(request, 'registration/booking.html', {'form': form, 'turf': turf})
+
 
 def editturfview(request):
     form = EditTurfForm()
@@ -102,8 +112,7 @@ def editturfview(request):
         form = EditTurfForm(request.POST, request.FILES, instance=Turf_List)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Update Successfull :)', extra_tags='alert')
+            messages.success(request, 'Update Successfull :)',
+                             extra_tags='alert')
             return redirect('myturfs')
     return render(request, 'turf/editturf.html', {'form': form})
-    
-        
