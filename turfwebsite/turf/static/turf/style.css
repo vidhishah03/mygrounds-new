@@ -400,6 +400,22 @@ ol {
 	position: relative;
 }
 
+@media screen and (max-width: 700px) {
+	.donec_text {
+		color: rgb(0, 0, 0);
+	}
+	.pagebtn {
+		display: none;
+	}
+	.header_main {
+		margin-bottom: 0;
+		padding-bottom: 30px;
+	}
+	.power {
+		margin-top: 20px;
+	}
+}
+
 .bannen_inner {
 	width: 100%;
 	float: left;
