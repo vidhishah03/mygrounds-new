@@ -8,7 +8,7 @@ class TurfForm(forms.ModelForm):
 
     class Meta:
         model = Turf_List
-        fields = ['name', 'address', 'image', 'has_refreshments', 'has_parking',
+        fields = ['owner', 'name', 'address', 'image', 'has_refreshments', 'has_parking',
                   'has_first_aid', 'events',  'num_5v5_turfs', 'price_per_hour_5v5_weekdays',
                   'weekdays_turf_opening_time', 'weekdays_turf_closing_time', 'price_per_hour_5v5_weekends',
                   'weekends_turf_opening_time', 'weekends_turf_closing_time']
@@ -57,7 +57,8 @@ class FeedbackForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['num_5v5', 'startTime', 'endTime']
+        labels = {'guest': 'Your Username', 'booked_turf_name':'Turf Name'}
+        fields = ['booked_turf_name', 'guest', 'num_5v5', 'startTime', 'endTime']
 
 
 class EditTurfForm(forms.ModelForm):

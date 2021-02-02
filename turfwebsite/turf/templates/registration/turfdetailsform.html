@@ -8,6 +8,7 @@
 <div class="" >
   <div class="container">
     <form cform method="POST" enctype="multipart/form-data" class="form-css">
+      <label for="name">Your Username : {{user}}</label>
       {% csrf_token %}
       {{form|crispy}}
       <h3 style="color: white; "><b>FOLLOW 24HR FORMAT AND HH:MM FORMAT WHILE PROVIDING TIME</b></h3>
