@@ -114,7 +114,7 @@
     			<div class="col-md-6">
     				<div class="input_main">
                        <div class="container">
-						<form cform method="POST" enctype="multipart/form-data">
+						<form cform method="POST" enctype="multipart/form-data" style="color: black;">
 							{% csrf_token %}
 							{{cform|crispy}}
 							<button type="button" class="main_bt bg-dark justify-content-center"><a href="#">Send</a></button>

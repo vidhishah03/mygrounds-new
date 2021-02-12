@@ -7,7 +7,7 @@
 {% block content %}
 <div class="" >
   <div class="container">
-    <form cform method="POST" enctype="multipart/form-data" class="form-css">
+    <form cform method="POST" enctype="multipart/form-data" class="grid-attempt mt-2">
       <label for="name">Your Username : {{user}}</label>
       {% csrf_token %}
       {{form|crispy}}
