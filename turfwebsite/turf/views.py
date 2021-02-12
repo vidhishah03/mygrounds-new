@@ -1,4 +1,5 @@
 import os
+from datetime import date
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
@@ -64,7 +65,7 @@ def show_myturfs(request):
     logged_in_user = request.user
     logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
     logged_in_user_bookings = Booking.objects.filter(guest=logged_in_user)
-    return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts,'mybookings':logged_in_user_bookings})
+    return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts, 'mybookings': logged_in_user_bookings})
 
 
 class myaccountview(generic.UpdateView):
@@ -99,6 +100,8 @@ def bookingview(request):
     turf_id_new = request.GET.get("turfId")
     turf = Turf_List.objects.values_list(
         'name', flat=True).get(turf_id=turf_id_new)
+    number_of_turfs = Turf_List.objects.values_list(
+        'num_5v5_turfs', flat=True).get(turf_id=turf_id_new)
     # return HttpResponse(turf)
     if str(request.user) != "AnonymousUser":
         currentuser = request.user
@@ -109,11 +112,15 @@ def bookingview(request):
         if request.method == 'POST':
             form = BookingForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
-                messages.success(request, 'Booking Successfull :)',
-                                 extra_tags='alert')
-                return redirect('myturfs')
-        return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
+                if request.POST.get("date") >= date.today().strftime("%Y-%m-%d"):
+                    booked = Booking.objects.filter(date=request.POST.get(
+                        "date"), startTime=request.POST.get("startTime"))
+                    # if not booked:
+                    form.save()
+                    messages.success(request, 'Booking Successfull :)',
+                                     extra_tags='alert')
+                    return redirect('myturfs')
+            return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
 

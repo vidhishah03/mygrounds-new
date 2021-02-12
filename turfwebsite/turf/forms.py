@@ -57,8 +57,9 @@ class FeedbackForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        labels = {'guest': 'Your Username', 'booked_turf_name':'Turf Name'}
-        fields = ['booked_turf_name', 'guest', 'num_5v5', 'startTime', 'endTime']
+        labels = {'username': 'Your Username', 'booked_turf_name': 'Turf Name'}
+        fields = ['booked_turf_name', 'username',
+                  'num_5v5', 'date', 'startTime', 'hours']
 
 
 class EditTurfForm(forms.ModelForm):
