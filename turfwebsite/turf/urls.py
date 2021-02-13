@@ -18,6 +18,7 @@ urlpatterns = [
     path('book/', views.bookingview, name="book"),
     path('editturf/', views.editturfview, name='editturf'),
 
+
 ]
 
 if settings.DEBUG:

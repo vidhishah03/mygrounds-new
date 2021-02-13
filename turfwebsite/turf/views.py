@@ -64,7 +64,7 @@ def show_contacts(request):
 def show_myturfs(request):
     logged_in_user = request.user
     logged_in_user_posts = Turf_List.objects.filter(owner=logged_in_user)
-    logged_in_user_bookings = Booking.objects.filter(guest=logged_in_user)
+    logged_in_user_bookings = Booking.objects.filter(username=logged_in_user)
     return render(request, 'registration/myturfs.html', {'myturfs': logged_in_user_posts, 'mybookings': logged_in_user_bookings})
 
 
@@ -135,3 +135,7 @@ def editturfview(request):
                              extra_tags='alert')
             return redirect('myturfs')
     return render(request, 'turf/editturf.html', {'form': form})
+
+    def get_object(self):
+        return self.request.Turf_List
+
