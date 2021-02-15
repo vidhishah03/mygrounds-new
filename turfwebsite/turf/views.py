@@ -115,12 +115,14 @@ def bookingview(request):
                 if request.POST.get("date") >= date.today().strftime("%Y-%m-%d"):
                     booked = Booking.objects.filter(date=request.POST.get(
                         "date"), startTime=request.POST.get("startTime"))
-                    # if not booked:
-                    form.save()
-                    messages.success(request, 'Booking Successfull :)',
-                                     extra_tags='alert')
-                    return redirect('myturfs')
-            return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
+                    if not booked:
+                        form.save()
+                        messages.success(request, 'Booking Successfull :)',
+                                         extra_tags='alert')
+                        return redirect('myturfs')
+                    else:
+                        return HttpResponse("oops")
+        return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
 
@@ -138,4 +140,3 @@ def editturfview(request):
 
     def get_object(self):
         return self.request.Turf_List
-
