@@ -114,14 +114,19 @@ def bookingview(request):
             if form.is_valid():
                 if request.POST.get("date") >= date.today().strftime("%Y-%m-%d"):
                     booked = Booking.objects.filter(date=request.POST.get(
-                        "date"), startTime=request.POST.get("startTime"))
-                    if not booked:
+                        "date"), startTime=request.POST.get("startTime"), booked_turf_name=request.POST.get("booked_turf_name"))
+
+                    currentTurf = Turf_List.objects.filter(
+                        name=request.POST.get("booked_turf_name"))
+
+                    tot = sum([int(i.num_5v5) for i in booked])
+                    if tot+int(request.POST.get("num_5v5")) <= int(number_of_turfs):
                         form.save()
                         messages.success(request, 'Booking Successfull :)',
                                          extra_tags='alert')
                         return redirect('myturfs')
                     else:
-                        return HttpResponse("oops")
+                        return HttpResponse("Not available")
         return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
