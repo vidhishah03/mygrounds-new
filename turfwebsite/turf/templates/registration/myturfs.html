@@ -8,9 +8,9 @@
 <body>
     <h3>MY BOOKINGS</h3>
     <div style="display: flex;">
-
+        <div class="row">
         {% for b in mybookings %}
-            <div class="col-md-4 col-lg-3 col-sm-6">
+            <div class="col-md-4 col-lg-6 col-sm-6">
                 <div class = "card" id="buy-cards">
                     <div class="card-body">
                         <div style="font-size: 1.25rem;color: #000000;font-weight: 600;" >Turf Name : {{b.booked_turf_name}}</div>
@@ -20,12 +20,13 @@
             </div>
     
         {% endfor %}
+        </div>
     </div>
     <h3>MY TURFS</h3>
     <div style="display: flex;">
-
-    {% for d in myturfs %}
-			<div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="row">
+        {% for d in myturfs %}
+			<div class="col-md-4 col-lg-6 col-sm-6">
 				<div class = "card" id="buy-cards">
 					<div class="card-body">
                         <img class="card-img-top" src="{{ d.image.url}}" style="height: 150px; width: 250px;">
@@ -46,6 +47,7 @@
             </div>
 
         {% endfor %}
+        </div>
     </div>
 </body>
 {% endblock %}
