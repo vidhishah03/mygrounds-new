@@ -149,25 +149,37 @@ def bookingview(request):
                         # prevBookings.append(
                         #     [prevStartTime, tot, hourSets, clash])
                     if int(request.POST.get("num_5v5")) + numberOfClashedTurfs <= int(number_of_turfs):
-                        return HttpResponse([numberOfClashedTurfs, "Available"])
+
+                        availableTurfs = int(
+                            number_of_turfs) - numberOfClashedTurfs
+
+                        # Turfs in current slot
+                        booked = Booking.objects.filter(date=request.POST.get(
+                            "date"), startTime=request.POST.get("startTime"), booked_turf_name=request.POST.get("booked_turf_name"))
+
+                        # Ignore next 2 lines
+                        # currentTurf = Turf_List.objects.filter(
+                        #     name=request.POST.get("booked_turf_name"))
+
+                        # Total number of booked turfs in the requested time slot
+                        totalTurfsInRequestedTimeSlot = sum(
+                            [int(i.num_5v5) for i in booked])
+
+                        # Availability condition
+                        if(totalTurfsInRequestedTimeSlot + int(request.POST.get("num_5v5")) <= availableTurfs):
+
+                            # To save the form values, below code to be uncommented
+                            # form.save()
+                            # messages.success(request, 'Booking Successfull :)',
+                            #                 extra_tags='alert')
+                            # return redirect('myturfs')
+
+                            return HttpResponse([availableTurfs, "Available", totalTurfsInRequestedTimeSlot, "Can be booked"])
+                        else:
+                            return HttpResponse("slot full so can't book")
                     else:
                         return HttpResponse([numberOfClashedTurfs, "Not Available"])
 
-                    # booked = Booking.objects.filter(date=request.POST.get(
-                    #     "date"), startTime=request.POST.get("startTime"), booked_turf_name=request.POST.get("booked_turf_name"))
-
-                    # currentTurf = Turf_List.objects.filter(
-                    #     name=request.POST.get("booked_turf_name"))
-
-                    # tot = sum([int(i.num_5v5) for i in booked])
-                    # print(tot+int(request.POST.get("num_5v5")))
-                    # if tot+int(request.POST.get("num_5v5")) <= int(number_of_turfs):
-                    #     form.save()
-                    #     messages.success(request, 'Booking Successfull :)',
-                    #                      extra_tags='alert')
-                    #     return redirect('myturfs')
-                    # else:
-                    #     return HttpResponse("Not available")
         return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
