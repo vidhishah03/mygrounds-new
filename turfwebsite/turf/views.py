@@ -113,20 +113,61 @@ def bookingview(request):
             form = BookingForm(request.POST, request.FILES)
             if form.is_valid():
                 if request.POST.get("date") >= date.today().strftime("%Y-%m-%d"):
-                    booked = Booking.objects.filter(date=request.POST.get(
-                        "date"), startTime=request.POST.get("startTime"), booked_turf_name=request.POST.get("booked_turf_name"))
+                    prevBookings = []
+                    numberOfClashedTurfs = 0
 
-                    currentTurf = Turf_List.objects.filter(
-                        name=request.POST.get("booked_turf_name"))
+                    # For loop going 1-3 hours behind requested startTime to check for clashes
+                    for i in range(1, 4):
+                        timeSplit = request.POST.get("startTime").split(":")
+                        prevStartTime = str(
+                            int(timeSplit[0])-i) + ":"+timeSplit[1]
 
-                    tot = sum([int(i.num_5v5) for i in booked])
-                    if tot+int(request.POST.get("num_5v5")) <= int(number_of_turfs):
-                        form.save()
-                        messages.success(request, 'Booking Successfull :)',
-                                         extra_tags='alert')
-                        return redirect('myturfs')
+                        # Previous bookings
+                        preBooking = Booking.objects.filter(date=request.POST.get(
+                            "date"), startTime=prevStartTime, booked_turf_name=request.POST.get("booked_turf_name"))
+
+                        # From the previous bookings, getting total booked turf values
+                        tot = sum([int(i.num_5v5) for i in preBooking])
+
+                        bookedSlotHours = 0
+                        clash = 0
+                        hourSets = []
+
+                        # To check multiple previous bookings in the same timeslot,
+                        # eg) 12pm-2pm 2turfs, 12pm-1pm 1 turf
+                        for j in preBooking:
+                            bookedSlotHours = int(j.hours)
+                            hourSets.append(bookedSlotHours)
+
+                            # Clash logic
+                            clash = (
+                                int(timeSplit[0])-i + bookedSlotHours) > int(timeSplit[0])
+
+                            # If there's a clash, getting the turfs that are already booked in the requested timeslot
+                            if clash:
+                                numberOfClashedTurfs += int(j.num_5v5)
+                        # prevBookings.append(
+                        #     [prevStartTime, tot, hourSets, clash])
+                    if int(request.POST.get("num_5v5")) + numberOfClashedTurfs <= int(number_of_turfs):
+                        return HttpResponse([numberOfClashedTurfs, "Available"])
                     else:
-                        return HttpResponse("Not available")
+                        return HttpResponse([numberOfClashedTurfs, "Not Available"])
+
+                    # booked = Booking.objects.filter(date=request.POST.get(
+                    #     "date"), startTime=request.POST.get("startTime"), booked_turf_name=request.POST.get("booked_turf_name"))
+
+                    # currentTurf = Turf_List.objects.filter(
+                    #     name=request.POST.get("booked_turf_name"))
+
+                    # tot = sum([int(i.num_5v5) for i in booked])
+                    # print(tot+int(request.POST.get("num_5v5")))
+                    # if tot+int(request.POST.get("num_5v5")) <= int(number_of_turfs):
+                    #     form.save()
+                    #     messages.success(request, 'Booking Successfull :)',
+                    #                      extra_tags='alert')
+                    #     return redirect('myturfs')
+                    # else:
+                    #     return HttpResponse("Not available")
         return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
         return redirect("login")
