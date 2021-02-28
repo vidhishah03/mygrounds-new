@@ -169,16 +169,16 @@ def bookingview(request):
                         if(totalTurfsInRequestedTimeSlot + int(request.POST.get("num_5v5")) <= availableTurfs):
 
                             # To save the form values, below code to be uncommented
-                            # form.save()
-                            # messages.success(request, 'Booking Successfull :)',
-                            #                 extra_tags='alert')
+                            form.save()
+                            messages.success(request, 'Booking Successfull :)',
+                                             extra_tags='alert')
                             # return redirect('myturfs')
 
                             return HttpResponse([availableTurfs, "Available", totalTurfsInRequestedTimeSlot, "Can be booked"])
                         else:
-                            return HttpResponse("slot full so can't book")
+                            return render(request, 'registration/booking.html', {'form': form, 'alert_1': True})
                     else:
-                        return HttpResponse([numberOfClashedTurfs, "Not Available"])
+                        return render(request, 'registration/booking.html', {'form': form, 'alert_2': True})
 
         return render(request, 'registration/booking.html', {'form': form, 'turf': turf, 'user': user})
     else:
