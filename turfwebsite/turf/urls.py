@@ -16,8 +16,7 @@ urlpatterns = [
     path('gallery/', views.feedbackview, name='gallery'),
     path('myturfs/', views.show_myturfs, name="myturfs"),
     path('book/', views.bookingview, name="book"),
-    path('editturf/', views.editturfview, name='editturf'),
-
+    path('editturf/', editturfview.as_view(), name='editturf'),
 
 ]
 

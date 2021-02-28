@@ -5,6 +5,9 @@
 	{% include "../Navbar.html" %}	  
 {% endblock %}
 {% block content %}
+    {% if alert %}
+        <script>alert("Turf Available !! Can Be Booked !")</script>  
+    {% endif %}
     {% if alert_1 %}
         <script>alert("Slots Full !! Can't Be Booked !")</script>  
     {% endif %}

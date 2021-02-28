@@ -65,7 +65,7 @@ class BookingForm(forms.ModelForm):
 class EditTurfForm(forms.ModelForm):
     class Meta:
         model = Turf_List
-        fields = ['image', 'has_refreshments', 'has_parking',
+        fields = ['has_refreshments', 'has_parking',
                   'has_first_aid', 'events',  'num_5v5_turfs', 'price_per_hour_5v5_weekdays',
                   'weekdays_turf_opening_time', 'weekdays_turf_closing_time', 'price_per_hour_5v5_weekends',
                   'weekends_turf_opening_time', 'weekends_turf_closing_time']

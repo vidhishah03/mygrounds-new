@@ -174,7 +174,7 @@ def bookingview(request):
                                              extra_tags='alert')
                             # return redirect('myturfs')
 
-                            return HttpResponse([availableTurfs, "Available", totalTurfsInRequestedTimeSlot, "Can be booked"])
+                            return render(request, 'registration/booking.html', {'form': form, 'alert': True})
                         else:
                             return render(request, 'registration/booking.html', {'form': form, 'alert_1': True})
                     else:
@@ -196,5 +196,20 @@ def editturfview(request):
             return redirect('myturfs')
     return render(request, 'turf/editturf.html', {'form': form})
 
-    def get_object(self):
-        return self.request.Turf_List
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['events'] = none
+        return initial
+
+class editturfview(generic.FormView):
+    form_class = EditTurfForm
+    success_url = reverse_lazy('myturfs')
+    template_name = 'turf/editturf.html'
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['events'] = "none"
+        initial['has_refreshments'] = True
+        initial['has_parking'] = True
+        initial['has_first_aid'] = True
+        return initial
