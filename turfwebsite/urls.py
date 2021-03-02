@@ -29,3 +29,7 @@ urlpatterns = [
     path('turf/', include('turf.urls')),
     path('turf/', include('django.contrib.auth.urls')),
 ]
+
+urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
