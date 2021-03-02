@@ -1,0 +1,20 @@
+{% extends '../base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Log In{% endblock %}
+{% block navbar %}
+	{% include "../Navbar.html" %}	  
+{% endblock %}
+{% block content %}
+<div class="turf-img" style="overflow:hidden;height:100vh;background: url('https://images.hdqwalls.com/download/grass-background-1v-2560x1440.jpg');background-size: cover;background-repeat: no-repeat;background-position-x:100;">
+  <div class="container">
+    <form cform method="POST" enctype="multipart/form-data" class="form-css">
+      <h2 style="color: rgb(255, 255, 255);text-align: center;">Login </h2>
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary justify-content-center" style="width: 50%;margin: 0 25%;">Login</button>
+        <p style="text-align: center;color: white;"> Don't have an account ?  <a style="color: rgb(0, 204, 255)" href="../signup">Sign Up</a></p>
+      </form>      
+  </div>
+</div>
+
+{% endblock %}
