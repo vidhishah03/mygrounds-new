@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
- Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = Path(__file__).resolve(strict=False).parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,8 +58,7 @@ ROOT_URLCONF = 'turfwebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        
+        'DIRS': [],        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +129,3 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
