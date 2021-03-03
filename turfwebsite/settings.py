@@ -140,6 +140,3 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'yoWeRFeXPbPxJWI4qwQyVV4nFXc'
 }
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
