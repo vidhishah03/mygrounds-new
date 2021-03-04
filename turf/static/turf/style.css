@@ -1013,6 +1013,7 @@ button.main_bt:hover {
 	background-position-x: -100px;
 	padding: 60px 0;
 }
+
 .form-css {
 	margin-bottom: 0;
 	padding: 30px 80px;
@@ -1024,9 +1025,6 @@ button.main_bt:hover {
 	border-radius: 20px;
 	border: 3px solid rgba(0, 53, 31, 0.507);
 	font-size: 20px;
-}
-.form-css input[type="text"] {
-	width: 500px;
 }
 
 .filter-form {
@@ -1082,4 +1080,10 @@ button.main_bt:hover {
 /* Forced Changes */
 .nice-select {
 	display: none;
+}
+@media screen and (max-width: 700px) {
+	.form-css {
+		padding: 10px;
+		width: 100%;
+	}
 }
