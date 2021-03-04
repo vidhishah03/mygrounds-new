@@ -641,6 +641,11 @@ button.btn.btn-primary:focus {
 		margin-top: 2%;
 		margin-bottom: 5%;
 	}
+
+	.form-css {
+		padding: 0px;
+		width: 100%;
+	}
 }
 .dolar_tetx {
 	width: 100%;
@@ -1024,9 +1029,6 @@ button.main_bt:hover {
 	border: 3px solid rgba(0, 53, 31, 0.507);
 	font-size: 20px;
 }
-.form-css input[type="text"] {
-	width: 500px;
-}
 
 .filter-form {
 	margin: auto;
@@ -1081,4 +1083,14 @@ button.main_bt:hover {
 /* Forced Changes */
 .nice-select {
 	display: none;
+}
+@media screen and (max-width: 700px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
+	.form-css {
+		padding: 10px;
+		width: 100%;
+	}
 }
