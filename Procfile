@@ -1,1 +1,1 @@
-web: gunicorn turfwebsite.wsgi --log-file -
+web: gunicorn turfwebsite.wsgi 
