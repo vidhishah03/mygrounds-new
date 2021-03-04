@@ -1082,6 +1082,10 @@ button.main_bt:hover {
 	display: none;
 }
 @media screen and (max-width: 750px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
 	.form-css {
 		padding: 10px;
 		width: 100%;
