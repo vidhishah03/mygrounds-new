@@ -1081,7 +1081,7 @@ button.main_bt:hover {
 .nice-select {
 	display: none;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
 	.form-css {
 		padding: 10px;
 		width: 100%;
