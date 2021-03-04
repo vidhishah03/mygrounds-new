@@ -140,3 +140,5 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'yoWeRFeXPbPxJWI4qwQyVV4nFXc'
 }
 
+
+django_heroku.settings(locals())
