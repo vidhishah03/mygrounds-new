@@ -141,4 +141,3 @@ CLOUDINARY_STORAGE = {
 }
 
 
-django_heroku.settings(locals())
